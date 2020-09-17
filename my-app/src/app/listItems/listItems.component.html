@@ -1,0 +1,48 @@
+<section class="faq-page">
+  <div class="faq-page__bg">
+    <img src="../../assets/broccoli.png" alt="broccoli">
+  </div>
+
+  <div class="faq-page__main">
+    <div class="faq-page__main_head">
+      <h2 class="faq-page__main_head-title">
+        Вопросы
+      </h2>
+
+      <h3 class="faq-page__main_head-subtitle">
+        все что вы хотите знать
+
+      </h3>
+    </div>
+
+    <div class="faq-page__main_questions">
+      <div class="faq-page__main_questions-item"
+           *ngFor="let item of items">
+        <div class="faq-page__main_questions-item_btn"
+             [class.active]='item.active'
+             (click)='openDetails(item)'>
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+            <path
+              d="M11.7429 25.5023L11.7518 14.2505L0.499935 14.2593L0.499937 11.7491L11.7518 11.7579L11.7429 0.506091H14.2532L14.2443 11.7579L25.4873 11.7579L25.4873 14.2505L14.2443 14.2505L14.2443 25.4935L11.7429 25.5023Z"
+              fill="#E41579"/>
+          </svg>
+        </div>
+
+        <div class="faq-page__main_questions-item_more">
+          <p class="faq-page__main_questions-item_more-title">
+            {{item.title}}
+          </p>
+
+          <div class="faq-page__main_questions-item_more-description"
+               *ngIf="item.active"
+               [@enterAnimation]>
+            <p class="faq-page__main_questions-item_more-description-item"
+               *ngFor="let description of item.description"
+               [innerHTML]="description">
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
